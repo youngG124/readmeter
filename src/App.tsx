@@ -39,6 +39,14 @@ function App() {
     setBooks((prev) => [...prev, newBook]);
   };
 
+  const updateNow = (index: number, newNow: number) => {
+    setBooks(prev =>
+      prev.map((book, i) =>
+        i === index ? { ...book, now: newNow } : book
+      )
+    );
+  };
+
   return (
     <div style={{ padding: '2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
@@ -49,7 +57,7 @@ function App() {
       </div>
 
       {books.map((book, index) => (
-        <Book key={index} title={book.title} total={Number(book.total)} now={Number(book.now)} />
+        <Book key={index} title={book.title} total={Number(book.total)} now={Number(book.now)} onChangeNow={(newNow) => updateNow(index, newNow)} />
       ))}
 
       {showModal && (
@@ -58,9 +66,6 @@ function App() {
           onClose={() => setShowModal(false)}
         />
       )}
-
-      <Book title="반항하는 인간" total={300} now={150}/>
-      <Book title="엔트로피" total={327} now={117}/>
     </div>
   )
 }
