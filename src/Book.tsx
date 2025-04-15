@@ -5,9 +5,10 @@ interface BookProps {
   total: number;
   now : number;
   onChangeNow: (newNow: number) => void;
+  onDelete: () => void;
 }
 
-const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow }) => {
+const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete }) => {
     const progress = (now / total) * 100;
     const barRef = useRef<HTMLDivElement>(null);
 
@@ -20,9 +21,27 @@ const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow }) => {
         const newNow = Math.round(newProgressRatio * total);
         onChangeNow(newNow);
     };
-    
+
     return (
-        <div style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '8px' }}>
+        <div style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '8px', position: 'relative', }}>
+
+        <button
+                onClick={onDelete}
+                style={{
+                position: 'absolute',
+                top: '8px',
+                right: '8px',
+                background: 'transparent',
+                border: 'none',
+                fontSize: '16px',
+                cursor: 'pointer',
+                color: '#888',
+                }}
+                title="삭제"
+            >
+                ✕
+            </button>
+
           <h2>{title}</h2>
           <p>완독률: {progress.toFixed(1)}% ({now} / {total})</p>
           <div

@@ -57,7 +57,11 @@ function App() {
       </div>
 
       {books.map((book, index) => (
-        <Book key={index} title={book.title} total={Number(book.total)} now={Number(book.now)} onChangeNow={(newNow) => updateNow(index, newNow)} />
+        <Book key={index} title={book.title} total={Number(book.total)} now={Number(book.now)} 
+        onChangeNow={(newNow) => updateNow(index, newNow)}
+        onDelete={() => {
+          setBooks(prev => prev.filter((_, i) => i !== index));
+        }} />
       ))}
 
       {showModal && (
