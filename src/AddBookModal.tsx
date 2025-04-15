@@ -1,4 +1,3 @@
-// src/components/BookModal.tsx
 import React, { useState } from 'react';
 
 interface AddBookModalProps {

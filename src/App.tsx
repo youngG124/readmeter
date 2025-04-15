@@ -11,6 +11,7 @@ interface BookData {
 
 function App() {
   const [books, setBooks] = useState<BookData[]>([]);
+  const [initialized, setInitialized] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -18,10 +19,13 @@ function App() {
     if (saved) {
       setBooks(JSON.parse(saved));
     }
+    setInitialized(true);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(books));
+    if (initialized) {
+      localStorage.setItem('books', JSON.stringify(books));
+    }    
   }, [books]);
 
   const handleAddBook = (title: string, total:string, yearMonth: string) => {
