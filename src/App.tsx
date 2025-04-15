@@ -24,12 +24,12 @@ function App() {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
 
-  const handleAddBook = (title: string, total:number, yearMonth: string) => {
-    if (!title || total <= 0) return;
+  const handleAddBook = (title: string, total:string, yearMonth: string) => {
+    if (!title || !total) return;
     const newBook: BookData = {
       title,
-      total,
-      now: 0,
+      total:Number(total),
+      now:0,
       yearMonth,
     };
     setBooks((prev) => [...prev, newBook]);
@@ -38,20 +38,20 @@ function App() {
   return (
     <div style={{ padding: '2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <h1>ReadMeter📚</h1>
+        <h1>Readmeter📚</h1>
         <button onClick={() => setShowModal(true)} style={{ alignSelf: 'flex-end' }}>
           📘 책 추가하기
         </button>
       </div>
 
       {books.map((book, index) => (
-        <Book key={index} title={book.title} total={book.total} now={book.now} />
+        <Book key={index} title={book.title} total={Number(book.total)} now={Number(book.now)} />
       ))}
 
       {showModal && (
         <AddBookModal
-          onClose={() => setShowModal(false)}
           onSave={handleAddBook}
+          onClose={() => setShowModal(false)}
         />
       )}
 

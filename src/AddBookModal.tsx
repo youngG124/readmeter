@@ -39,7 +39,7 @@ const AddBookModal: React.FC<AddBookModalProps> = ({ onClose, onSave }) => {
           minWidth: '200px',
         }}
       >
-        <h2>📖 새 책 추가</h2>
+        <h2 style={{textAlign: 'center'}}>📖 새 책 추가</h2>
         <input
           type="text"
           placeholder="책 제목"
