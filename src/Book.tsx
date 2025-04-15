@@ -23,7 +23,7 @@ const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete })
     };
 
     return (
-        <div style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem', borderRadius: '8px', position: 'relative', }}>
+        <div style={{ border: '1px solid #ccc', padding: '0.3rem 1rem 1rem 1rem', marginBottom: '1rem', borderRadius: '8px', position: 'relative', }}>
 
         <button
                 onClick={onDelete}
@@ -37,7 +37,7 @@ const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete })
                 cursor: 'pointer',
                 color: '#888',
                 }}
-                title="삭제"
+                title="delete"
             >
                 ✕
             </button>

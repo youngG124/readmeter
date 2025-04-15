@@ -32,38 +32,94 @@ const AddBookModal: React.FC<AddBookModalProps> = ({ onClose, onSave }) => {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: 'rgb(99, 168, 217)',
+          backgroundColor: '#1e1e1e',
+          color: '#fff',
           padding: '2rem',
-          borderRadius: '8px',
-          minWidth: '200px',
+          borderRadius: '10px',
+          minWidth: '280px',
+          maxWidth: '280px',
+          boxShadow: '0 0 10px rgba(0,0,0,0.8)',
         }}
       >
-        <h2 style={{textAlign: 'center'}}>📖 새 책 추가</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>📖 Add New Book</h2>
+
         <input
           type="text"
-          placeholder="책 제목"
+          placeholder="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{ display: 'block', marginBottom: '0.5rem', width: '100%', textAlign: 'center' }}
+          style={{
+            backgroundColor: '#2e2e2e',
+            color: '#fff',
+            border: '1px solid #444',
+            borderRadius: '4px',
+            padding: '0.5rem',
+            marginBottom: '0.5rem',
+            width: '100%',
+            textAlign: 'center',
+          }}
         />
         <input
           type="text"
-          placeholder="총 페이지 수"
+          placeholder="total page"
           value={total}
           onChange={(e) => setTotal(e.target.value)}
-          style={{ display: 'block', marginBottom: '0.5rem', width: '100%', textAlign: 'center' }}
+          style={{
+            backgroundColor: '#2e2e2e',
+            color: '#fff',
+            border: '1px solid #444',
+            borderRadius: '4px',
+            padding: '0.5rem',
+            marginBottom: '0.5rem',
+            width: '100%',
+            textAlign: 'center',
+          }}
         />
         <input
           type="text"
-          placeholder="시작 월(ex : 2503)"
+          placeholder="year month (ex: 2504)"
           value={yearMonth}
           onChange={(e) => setYearMonth(e.target.value)}
-          style={{ display: 'block', marginBottom: '1rem', width: '100%', textAlign: 'center' }}
+          style={{
+            backgroundColor: '#2e2e2e',
+            color: '#fff',
+            border: '1px solid #444',
+            borderRadius: '4px',
+            padding: '0.5rem',
+            marginBottom: '1rem',
+            width: '100%',
+            textAlign: 'center',
+          }}
         />
         <div style={{ textAlign: 'center' }}>
-          <button onClick={handleSubmit} style={{ marginRight: '0.5rem' }}>Add</button>
-          <button onClick={onClose}>Cancel</button>
-        </div>        
+          <button
+            onClick={handleSubmit}
+            style={{
+              marginRight: '0.5rem',
+              padding: '0.4rem 1rem',
+              backgroundColor: '#4caf50',
+              border: 'none',
+              color: 'white',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            add
+          </button>
+          <button
+            onClick={onClose}
+            style={{
+              padding: '0.4rem 1rem',
+              backgroundColor: '#555',
+              border: 'none',
+              color: 'white',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            cancel
+          </button>
+        </div>
       </div>
     </div>
   );

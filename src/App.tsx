@@ -48,12 +48,27 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <h1>Readmeter📚</h1>
-        <button onClick={() => setShowModal(true)} style={{ alignSelf: 'flex-end' }}>
-          📘 책 추가하기
-        </button>
+    <div style={{ padding: '0 2rem 2rem 2rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>Readmeter📚 4월</h1>
+
+        {/* 메뉴 버튼 */}
+        <div
+          onClick={() => setShowModal(true)}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: '10px',
+            cursor: 'pointer',
+            width: '40px',
+            height: '40px',
+          }}
+        >
+          <div style={{ height: '3px', backgroundColor: '#888', borderRadius: '2px' }} />
+          <div style={{ height: '3px', backgroundColor: '#888', borderRadius: '2px' }} />
+          <div style={{ height: '3px', backgroundColor: '#888', borderRadius: '2px' }} />
+        </div>
       </div>
 
       {books.map((book, index) => (
