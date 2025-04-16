@@ -74,6 +74,8 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Readmeter📚 {getCurrentMonth()}월</h1>
 
+        <h1 className="text-3xl font-bold text-pink-600 underline">Tailwind OK!</h1>
+
         {/* 메뉴 버튼 */}
         <div
           onClick={() => setShowModal(true)}
