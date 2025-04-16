@@ -23,7 +23,8 @@ function App() {
 
   const [editingBookIndex, setEditingBookIndex] = useState<number | null>(null);
   const [showEditModal, setShowEditModal] = useState(false);
-
+  
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('books');
@@ -72,7 +73,37 @@ function App() {
   return (
     <div style={{ padding: '0 2rem 2rem 2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Readmeter📚 {getCurrentMonth()}월</h1>
+      <div style={{ position: 'relative', display: 'flex', gap:'19px'}}>
+        <h1 style={{ }}>Readmeter📚 </h1>
+        <h1 onClick={() => setDropdownOpen(prev => !prev)} style={{ cursor: 'pointer' }}>
+          {getCurrentMonth()}월
+        </h1>
+
+        {dropdownOpen && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {/* 화살표 영역 */}
+          <span style={{ fontSize: '1rem', color: 'white' }}>▶</span>
+
+          {/* 드롭다운 본체 */}
+          <ul
+            style={{
+              backgroundColor: 'black',
+              color: 'black',
+              border: '1px solid #ccc',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+              borderRadius: '5px',
+              padding: 0,
+              listStyle: 'none',
+              minWidth: '160px',
+            }}
+          >
+            <li style={dropdownItemStyle}>지난달</li>
+            <li style={dropdownItemStyle}>올해</li>
+            <li style={dropdownItemStyle}>작년</li>
+          </ul>
+        </div>
+        )}
+      </div>
 
         {/* 메뉴 버튼 */}
         <div
@@ -132,8 +163,19 @@ function App() {
           onSave={handleSaveEdit}
         />
       )}
+
+      
     </div>
   )
 }
+
+const dropdownItemStyle = {
+  padding: '0.5rem 1rem',
+  cursor: 'pointer',
+  borderBottom: '1px solid #eee',
+  fontSize: '0.8rem',
+  backgroundColor: 'white',
+  height: '15px',
+};
 
 export default App
