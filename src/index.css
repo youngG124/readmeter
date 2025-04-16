@@ -10,7 +10,3 @@ h1 {
   font-size: 3.2em;
   text-align: center;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
