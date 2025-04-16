@@ -6,9 +6,10 @@ interface BookProps {
   now : number;
   onChangeNow: (newNow: number) => void;
   onDelete: () => void;
+  onEdit: () => void;
 }
 
-const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete }) => {
+const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete, onEdit }) => {
     const progress = (now / total) * 100;
     const barRef = useRef<HTMLDivElement>(null);
 
@@ -25,22 +26,39 @@ const Book: React.FC<BookProps> = ({ title, total, now, onChangeNow, onDelete })
     return (
         <div style={{ border: '1px solid #ccc', padding: '0.3rem 1rem 1rem 1rem', marginBottom: '1rem', borderRadius: '8px', position: 'relative', }}>
 
-        <button
-                onClick={onDelete}
-                style={{
-                position: 'absolute',
-                top: '8px',
-                right: '8px',
-                background: 'transparent',
-                border: 'none',
-                fontSize: '16px',
-                cursor: 'pointer',
-                color: '#888',
-                }}
-                title="delete"
-            >
-                ✕
-            </button>
+          <button
+                  onClick={onDelete}
+                  style={{
+                  position: 'absolute',
+                  top: '8px',
+                  right: '8px',
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: '16px',
+                  cursor: 'pointer',
+                  color: '#888',
+                  }}
+                  title="delete"
+              >
+                  ✕
+          </button>
+
+          <button
+            onClick={onEdit}
+            style={{
+              position: 'absolute',
+              top: '8px',
+              right: '32px',
+              background: 'transparent',
+              border: 'none',
+              fontSize: '16px',
+              cursor: 'pointer',
+              color: '#888',
+            }}
+            title="edit"
+          >
+            ✎
+          </button>
 
           <h2>{title}</h2>
           <p>완독률: {progress.toFixed(1)}% ({now} / {total})</p>
