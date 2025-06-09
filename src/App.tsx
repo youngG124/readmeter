@@ -91,15 +91,16 @@ function App() {
               color: 'black',
               border: '1px solid #ccc',
               boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-              borderRadius: '5px',
+              borderRadius: '3px',
               padding: 0,
               listStyle: 'none',
-              minWidth: '160px',
+              minWidth: '80px',
+              textAlign: 'center',
             }}
           >
-            <li style={dropdownItemStyle}>지난달</li>
-            <li style={dropdownItemStyle}>올해</li>
-            <li style={dropdownItemStyle}>작년</li>
+            <li style={dropdownItemStyle}>Last Month</li>
+            <li style={dropdownItemStyle}>This Year</li>
+            <li style={dropdownItemStyle}>Last Year</li>
           </ul>
         </div>
         )}
@@ -170,12 +171,13 @@ function App() {
 }
 
 const dropdownItemStyle = {
-  padding: '0.5rem 1rem',
+  padding: '0.5rem',
   cursor: 'pointer',
   borderBottom: '1px solid #eee',
-  fontSize: '0.8rem',
+  fontSize: '0.75rem',
   backgroundColor: 'white',
   height: '15px',
+  fontWeight: 'bold',
 };
 
 export default App
