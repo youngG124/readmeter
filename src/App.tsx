@@ -74,36 +74,46 @@ function App() {
     <div style={{ padding: '0 2rem 2rem 2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <div style={{ position: 'relative', display: 'flex', gap:'19px'}}>
-        <h1 style={{ }}>Readmeter📚 </h1>
-        <h1 onClick={() => setDropdownOpen(prev => !prev)} style={{ cursor: 'pointer' }}>
-          {getCurrentMonth()}월
-        </h1>
+        <h1 style={{ }}>Readmeter📚🕒 </h1>
+        <div style={{ position: 'relative', display: 'inline-block' }}>
 
-        {dropdownOpen && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          {/* 화살표 영역 */}
-          <span style={{ fontSize: '1rem', color: 'white' }}>▶</span>
+          <h1 onClick={() => setDropdownOpen(prev => !prev)} style={{ cursor: 'pointer' }}>
+            {getCurrentMonth()}월
+          </h1>
+            {dropdownOpen && (
+              <div style={{
+                position: 'absolute', // 포인트: 기존 레이아웃에서 분리
+                top: 0, // 조정 필요: 부모 기준으로 위치 지정
+                left: '100%',
+                zIndex: 1000, // 다른 요소 위에 보이도록
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}>
+                {/* 화살표 영역 */}
+                <span style={{ fontSize: '1rem', color: 'white' }}></span>
 
-          {/* 드롭다운 본체 */}
-          <ul
-            style={{
-              backgroundColor: 'black',
-              color: 'black',
-              border: '1px solid #ccc',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-              borderRadius: '3px',
-              padding: 0,
-              listStyle: 'none',
-              minWidth: '80px',
-              textAlign: 'center',
-            }}
-          >
-            <li style={dropdownItemStyle}>Last Month</li>
-            <li style={dropdownItemStyle}>This Year</li>
-            <li style={dropdownItemStyle}>Last Year</li>
-          </ul>
+                {/* 드롭다운 본체 */}
+                <ul
+                  style={{
+                    backgroundColor: 'black',
+                    color: 'black',
+                    border: '1px solid #ccc',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                    borderRadius: '3px',
+                    padding: 0,
+                    listStyle: 'none',
+                    minWidth: '80px',
+                    textAlign: 'center',
+                  }}
+                >
+                  {Array.from({ length: 12 }, (_, i) => (
+                    <li key={i} style={dropdownItemStyle}>{`${i + 1}월`}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
         </div>
-        )}
       </div>
 
         {/* 메뉴 버튼 */}
